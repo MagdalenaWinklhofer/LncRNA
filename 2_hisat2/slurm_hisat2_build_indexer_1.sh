@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#SBATCH --account=nn8014k
+#SBATCH --job-name=hisat2_Carassius
+#SBATCH --time=00:10:00
+#SBATCH --mem=1G
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+
+
+# load the needed modules
+module purge 
+module load HISAT2/2.1.0-foss-2018b
+
+# show me the loaded modules in a list
+ml list
+
+# change directory to the program script 
+cd /cluster/projects/nn8014k/magdalena/program_HISAT2
+
+# Before building the index, exons and splice sites have to be extracted
+python hisat2_extract_splice_sites.py /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/augustus.hints.gtf >splice_sites.ss 
+python hisat2_extract_exons.py /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/augustus.hints.gtf >extracted_exons.exon
+
+# to close everything 
+ml purge 
+
+
