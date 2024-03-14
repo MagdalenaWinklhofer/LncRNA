@@ -10,24 +10,27 @@ The quality was assessed with Fastqc and the script `1_fastqc_RNAseq2015.sh`.
 
 | Run complete | Sample  | R1   | R2  | Commend |
 |---|---|---|---|--|
-| N  |  A1 |   |   |   |
-| N  |  A2 |   |   |   |
-| N  |  A3 |   |   |   |
-| N  |  A4 |   |   |   |
-| N  |  A5 |   |   |   |
-| N  |  A6 |   |   |   |
-| N  |  N14 |   |   |   |
-| N  |  N15 |   |   |   |
-| N  |  N16 |   |   |   |
-| N  |  N17 |   |   |   |
-| N  |  N18 |   |   |   |
-| N  |  N21 |   |   |   |
-| N  |  R10 |   |   |   |
-| N  |  R11 |   |   |   |
-| N  |  R12 |   |   |   |
-| N  |  R13 |   |   |   |
-| N  |  R8 |   |   |   |
-| N  |  R9 |   |   |   |
+| N  |  A1 |  X | X  | -  |
+| N  |  A2 |  X | X  | -  |
+| N  |  A3 | X  |  X |  - |
+| N  |  A4 | X  |  X |  - |
+| N  |  A5 | X  |  X |  - |
+| N  |  A6 | X  |  X |  - |
+| N  |  N14 |  X | X  | -  |
+| N  |  N15 |  X |  X |  Overrepresented sequences |
+| N  |  N16 |  X |  X |  Overrepresented sequences |
+| N  |  N17 |  X |  X |  Overrepresented sequences |
+| N  |  N18 |  X |  X |  - |
+| N  |  N21 |  X |  X |  - |
+| N  |  R10 |  X |  X |  - |
+| N  |  R11 |  X |  X | -  |
+| N  |  R12 |  X | X  | -  |
+| N  |  R13 |  X | X  | -  |
+| N  |  R8 | X  | X  | -  |
+| N  |  R9 | X  | X  | Overrepresented sequences  |
+
+Nn adapter contamination. 
+In all samples the "Per base sequence content" is noted as problematic, but since HISAT2 does soft clipping that should not be a plroblem for the alignment. Just check that the mapping efficiency is high!
 
 Y= yes ; N= no
 

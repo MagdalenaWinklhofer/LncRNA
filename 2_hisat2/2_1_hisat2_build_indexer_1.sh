@@ -10,19 +10,20 @@
 
 # load the needed modules
 module purge 
-module load HISAT2/2.1.0-foss-2018b
+module load HISAT2/2.2.1-gompi-2022a
 
 # show me the loaded modules in a list
 ml list
 
 # change directory to the program script 
-cd /cluster/projects/nn8014k/magdalena/program_HISAT2
+cd /cluster/work/users/magdalena/lncrna/genome_index/
 
 # Before building the index, exons and splice sites have to be extracted
-python hisat2_extract_splice_sites.py /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/augustus.hints.gtf >splice_sites.ss 
-python hisat2_extract_exons.py /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/augustus.hints.gtf >extracted_exons.exon
+python /cluster/projects/nn8014k/magdalena/.program_HISAT2/hisat2_extract_splice_sites.py ccar_annotation.gtf >splice_sites.ss 
+python /cluster/projects/nn8014k/magdalena/.program_HISAT2/hisat2_extract_exons.py ccar_annotation.gtf >extracted_exons.exon
 
 # to close everything 
 ml purge 
+
 
 
