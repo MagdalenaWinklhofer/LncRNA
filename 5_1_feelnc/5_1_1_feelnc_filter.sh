@@ -2,7 +2,7 @@
 
 #SBATCH --account=nn8014k
 #SBATCH --job-name=FEELnc_Carassius_filter
-#SBATCH --time=01:00:00
+#SBATCH --time=20:00:00
 #SBATCH --mem=32G
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
@@ -22,7 +22,7 @@ FEELnc_filter.pl \
  -p 4 --monoex=1 \
  -i /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_merged.gtf \
  -a /cluster/work/users/magdalena/lncrna/genome_index/ccar_annotation.gtf  \
- > /cluster/work/users/magdalena/lncrna/4_1_feelnc/feelnc_candidate_lncRNA.gtf
+ > /cluster/work/users/magdalena/lncrna/5_1_feelnc/feelnc_filter/feelnc_candidate_lncRNA.gtf
 
 # keep monoexonic transcripts (sense and antisense) 
 

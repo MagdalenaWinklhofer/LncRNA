@@ -55,6 +55,20 @@ multiple files in the `/cluster/work/users/magdalena/lncrna/4_1_feelnc` director
 
 This part of the program needs a long time to complete. The program usually runs multiple hours. The suffle mode took 7.5h to complete. 
 
+# NOTE: I used shuffle mode during the calculation of coding potential. 
+
+# NOTE: STEP 3 is not needed for the lncRNA identification. Take the `feelnc_lncRNA_codpot_shuffle.lncRNA.gtf` file for identification of common lncRNA 
+
+`feelnc_lncRNA_codpot_shuffle.noORF.gtf` is most likely a subset of `feelnc_lncRNA_codpot_shuffle.lncRNA.gtf`. 
+
+
+
+
+
+
+
+
+
 ## 3) FEELnc_classifier.pl: Classify lncRNAs based on their genomic localization wrt others transcripts. (18.03.2024: slurm out:  10985678 )
 During this step of the pipeline the transcripts are classified as coding and noncoding corresponding to the calculated coding potential (from the codpot module). 
 
@@ -78,4 +92,3 @@ The program took with one CPU and one task ..h to complete.
 
 # FINAL FILE: feelnc_lncRNA.txt
 
-# NOTE: I used shuffle mode during the calculation of coding potential. 
