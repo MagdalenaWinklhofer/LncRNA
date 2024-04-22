@@ -14,11 +14,11 @@ cd /cluster/projects/nn8014k/magdalena/.program_pRIblast/pRIblast/pRIblast/targe
 
 # program command: 
 mpirun -np 8 -x OMP_NUM_THREADS=8 \
-         pRIblast.release db -i /cluster/work/users/magdalena/lncrna/11_lncRNA_interaction/RIblast/cc_transcripts.fa \
-                     -o /cluster/work/users/magdalena/lncrna/11_lncRNA_interaction/RIblast/database_cc \
-                     -a dynamic \
-                     -p /cluster/work/users/magdalena/lncrna/11_lncRNA_interaction/RIblast/tmp/scratch -c 500
+         pRIblast.release db -i /cluster/work/users/magdalena/lncrna/11_lncRNA_interaction/pRIblast/cc_transcripts.fa \
+                     -o /cluster/work/users/magdalena/lncrna/11_lncRNA_interaction/pRIblast/database_cc \
+                     -a dynamic -c 500 \
 
+# run without p option
 
 # close everything
 ml purge 
