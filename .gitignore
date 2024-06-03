@@ -253,3 +253,14 @@
 11_lncrna_rna_interaction/1_RIblast/slurm-11172955.out
 11_lncrna_rna_interaction/1_RIblast/slurm-11210956.out
 11_lncrna_rna_interaction/assa/cc_lncRNA_transcripts.fasta
+10_lncRNA_classification/5_1_1_feelnc_filter/slurm-11107547.out
+10_lncRNA_classification/5_1_2_feelnc_codpot/slurm-11107871.out
+10_lncRNA_classification/5_1_3_feelnc_classifier/slurm-11140901.out
+11_lncrna_rna_interaction/1_RIblast/lncRNA_interactions.txt
+11_lncrna_rna_interaction/1_RIblast/slurm-11245816.out
+11_lncrna_rna_interaction/1_RIblast/slurm-11410331.out
+11_lncrna_rna_interaction/1_RIblast/slurm-11412249.out
+11_lncrna_rna_interaction/1_RIblast/slurm-11415758.out
+11_lncrna_rna_interaction/1_RIblast/slurm-11456752.out
+11_lncrna_rna_interaction/1_RIblast/slurm-11573665.out
+11_lncrna_rna_interaction/1_RIblast/test.txt

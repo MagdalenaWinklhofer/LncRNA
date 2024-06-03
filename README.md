@@ -2,11 +2,11 @@
 
 ## 1) Import RNA files and perform quality check with FASTQc
 
-## 2) Alignment with HISAT2
+## 2) Alignment with HISAT2: 14.03.2024
 
-## 3) Create Transcriptome with StringTie 
+## 3) Create Transcriptome with StringTie: 15.03.2024
 
-## 4) GFFread extract all transcripts 
+## 4) GFFread extract all transcripts: 18.03.2024
 
 ## 5) Identification of coding and noncoding transcripts: 
 
@@ -14,7 +14,9 @@
 
 ### 5.2) CNCI: 
 
-### 5.3) CPAT: 
+### 5.3) CPC2:
+
+### 5.4) CPAT: 
 
 ## 6) Identification of common lncRNA (create subset)
 

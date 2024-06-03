@@ -92,3 +92,7 @@ The program took with one CPU and one task ..h to complete.
 
 # FINAL FILE: feelnc_lncRNA.txt
 
+
+
+
+# NOTE: File 5_1_1 until 5_1_3 are for the classification of lncRNA and ONLY 5_1_4 are for the idnetification of lncRNA
