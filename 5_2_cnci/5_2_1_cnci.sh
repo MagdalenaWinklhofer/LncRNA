@@ -17,8 +17,8 @@ cd /cluster/projects/nn8014k/magdalena/.program_CNCI/CNCI
 
 # 1: CNCI.py: A classification tool for identify coding or non-coding transcripts (fasta files and gtf files)
 python CNCI.py \
- -f /cluster/projects/nn8014k/magdalena/script_LncRNA/4_gffread/cc_transcripts.fa \
- -o /cluster/work/users/magdalena/lncrna/5_2_cnci/output \
+ -f /cluster/projects/nn8014k/magdalena/LncRNA/4_gffread/all_transcript/cc_transcripts_all.fa \
+ -o cc_identified_lncRNA_cnci \
  -p 20 \
  -m ve \
  

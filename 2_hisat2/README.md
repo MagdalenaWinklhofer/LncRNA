@@ -11,8 +11,8 @@ Since crucian carp is not a model organisms hisat2 does not provide a index file
 
 Builing an index is done once. After that the index gets reused for other applications. 
 
-### 1) Extracting exons and splicing sites from the GTF file.  (13.03.2024)
-To prepare the genome data the `hisat2_buid` command was used to extract exons and splicing sites from the GFT file (`/cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/annotation/ccar_annotation.gtf`). Two python scripts were used to get a .exon and .ss file. They were used as input in 2). 
+### 1) Extracting exons and splicing sites from the GTF file.  (13.09.2024)
+To prepare the genome data the `hisat2_buid` command was used to extract exons and splicing sites from the GFT file (`/cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp/annotation/carcar_annotation_v5.gtf`). Two python scripts were used to get a .exon and .ss file. They were used as input in 2). 
 
 **Slurm file**:  
 `2_1_hisat2_build_indexer_1.sh`
@@ -27,16 +27,13 @@ input:
 Use hisat2_extract_splice_sites.py (in the HISAT2 package) to extract splice sites from a GTF file.
 - `--exon`: Note this option should be used with the above --ss option. Use hisat2_extract_exons.py (in the HISAT2 package) to extract exons from a GTF file.
 
-**Setting for the script**:  
-time memory  tasks cpu anything special 
-
-**Outcome**:  
+**Outcome**:  (information from previous runs)
 The program was given a time window of 10 minutes, but the process was done after 5 minutes. Memory of 1 GB is sufficient, since the program only used 173 MG. The program was started with ntasks 1 and cpus-per-task=1. This can be kept for future runs since the CPU Efficiency was low with 7%. Setting are good for future runs. 
 
 The output files are `extracted_exons.exon` for the extracted exons and `splice_sites.ss`for the extracted splice sites. These files were used as input for the builing process of the index itself. Both files are stored in the directory `/cluster/work/users/magdalena/lncrna/genome_index/`. 
 
-### 2) Build the index itself (13.02.2024)
-To build the indes itself the output from the `slurm_hisat2_build_indexer_1.sh` script (=`extracted_exons.exon`,`splice_sites.ss`) were used as input. The information about the command can be sound on the hisat2 webpage under HowTo. The option `Build HGFM (= Hierarchical Graph FM index) index with transcripts` was choosen. The .exon and .ss files were used as input and a 8 `NAME.ht2` files were created. From the reference genome (here the `ccar_genome_v1_262scaffolds_masked.fasta` file was taken from /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp) (.fasta file) 8 files with suffixes e.g. `NAME.1.ht2, 2.ht2` are created. All these files together constitute the index (=is all that is needed to align the reads to the reference; the .fasta file is no longer needed)
+### 2) Build the index itself (13.09.2024)
+To build the index itself the output from the `slurm_hisat2_build_indexer_1.sh` script (=`extracted_exons.exon`,`splice_sites.ss`) were used as input. The information about the command can be found on the hisat2 webpage under HowTo. The option `Build HGFM (= Hierarchical Graph FM index) index with transcripts` was choosen. The .exon and .ss files were used as input and a 8 `NAME.ht2` files were created. From the reference genome (here the `ccar_genome_v1_262scaffolds_masked.fasta` file was taken from /cluster/projects/nn8014k/magdalena/genome/genome_crucian_carp) (.fasta file) 8 files with suffixes e.g. `NAME.1.ht2, 2.ht2` are created. All these files together constitute the index (=is all that is needed to align the reads to the reference; the .fasta file is no longer needed)
 
 **Slurm file**:  
 `2_2_hisat2_build_indexer_2.sh`
@@ -55,16 +52,16 @@ input:
 Since the option `Build HGFM index with transcripts` was choosen the program needs about an hour to build the index and requires at least 160 GB memory. In my setting I choose 170 GB memory. 
 
 **Outcome**:  
-The output of this steps should be 8 files with suffixes e.g. `NAME.1.ht2, 2.ht2` (wrapper choose small index option by default). They can be found  in the directory `/cluster/projects/nn8014k/magdalena/program_HISAT2/index`. All these files together constitute the index (=is all that is needed to align the reads to the reference; the .fasta file is no longer needed)
+The output of this steps should be 8 files with suffixes e.g. `NAME.1.ht2, 2.ht2` (wrapper choose small index option by default). They can be found  in the directory `/cluster/work/users/magdalena/lncrna/genome_index`. All these files together constitute the index (=is all that is needed to align the reads to the reference; the .fasta file is no longer needed)
 
 
-## 2) Alignment (14.03.2024)
+## 2) Alignment (13.09.2024)
 During the alignment step the sequences RNA transcripts are aligned to the 8 index files. Since the transcripts were sequences in a paired end manor, the forward and the reverse sequences have to be added.  
 The index files were used to create a SAM file during the alignment of RNA transcripts to the indexes. 
 
 **Since the .sam files are large, the slurm script was started in the `/cluster/work/users/magdalena` driectory. When starting the script in another directory make sure that the suitable directories are given.**
 
-For the alignment of the RNA transcripts as single samples each **biological sample (6)** of each **condition** (normoxia, anoxia, reogygenation) with **2 transcripts** (forward (R1) and reverse (R2)) was used to create one sam file as an alignment. During this step a total of **18 .sam** files are created.  
+For the alignment of the RNA transcripts as single samples each **biological sample (6)** of each **condition** (normoxia, anoxia, reoxygenation) with **2 transcripts** (forward (R1) and reverse (R2)) was used to create one sam file as an alignment. During this step a total of **18 .sam** files are created.  
 
 **Slurm file**:  
 `2_3_hisat2_alignment.sh`
@@ -89,35 +86,35 @@ The outcome files were used as input in the SAMtools module. Since each of the .
 **Mapping efficiency**: 
 | Sample  | Mapping efficiency   | Slurm task id |
 |---|---|---|
-|  A1 | 97.77% | 0  |
-|  A2 |  98.19% | 1  |
-|  A3 | 98.26%  | 2  |
-|  A4 | 98.19%  | 3  |
-|  A5 | 98.18%  | 4  |
-|  A6 | 98.35%  | 5  |
-|  N14 | 98.37% | 6  |
-|  N15 |  98.44%|  7 |
-|  N16 |  98.39% | 8 |
-|  N17 |  98.48% |  9 |
-|  N18 |  98.24% | 10 |
-|  N21 |  98.39% |  11 |
-|  R10 |  98.34% | 12  |
-|  R11 |  98.23% | 13  |
+|  A1 | 97.78% | 0  |
+|  A2 |  98.20% | 1  |
+|  A3 | 98.27%  | 2  |
+|  A4 | 98.20% | 3  |
+|  A5 | 98.19%  | 4  |
+|  A6 | 98.36% | 5  |
+|  N14 | 98.38% | 6  |
+|  N15 |  98.44% |  7 |
+|  N16 |  98.40% | 8 |
+|  N17 | 98.48% |  9 |
+|  N18 |  98.25% | 10 |
+|  N21 |  98.40% |  11 |
+|  R10 | 98.35% | 12  |
+|  R11 |  98.24% | 13  |
 |  R12 |  98.27% | 14  |
-|  R13 |  98.16% | 15  |
-|  R8 | 98.37%  | 16  |
-|  R9 | 98.33%  | 17  |
+|  R13 |  98.17% | 15  |
+|  R8 | 98.38%  | 16  |
+|  R9 | 98.34%  | 17  |
 
 
 
-## 3) Converstion from .sam to .bam files (14.03.2024)
+## 3) Converstion from .sam to .bam files (13.09.2024)
 For StringTie the files have to be converted to bam files. This was done with the `2_4_samtools_convert_to_bam.sh` script. 
 
 **SAMtools**  
 The Samtool webpage can help with further information: https://www.htslib.org/doc/samtools-sort.html  
 Further information can be found in the Hisat2 manual. 
 
-The Samtool is a available module on the saga server (`SAMtools/1.15.1-GCC-11.3.0`) and was used to convert the SAM file received from the hisat2 alignment to be converted into a BAM file. The BAM file can further be used as input for the StringTie programm. 
+The Samtool is a available module on the saga server (`SAMtools/1.15.1-GCC-11.3.0`) and was used to convert the SAM file received from the hisat2 alignment to be converted into a BAM file. 
 
 ## A) Single samples
 **Slurm file**:  
@@ -138,9 +135,10 @@ to 9 (best compression but slowest to write), similarly to gzip(1)s compression 
 Since the single .sam files were created in the `/cluster/work/users/magdalena/lncrna/2_hisat_alignment` directory, the slurm script to convert the .sam files to .bam files was also started there. The .bam files were created in the same directory. 
 
 **Outcome**:  
-`crucian_carp_alignment_*_out.bam` 
-
-The program was given a time window of 10 hours, but it finished after 2:33 h. The program was given ntasks=1 and 16 cpus per task. The CPU efficiency was with 77% very good. 12 GB out of the 16 GB given were used (memory efficency: 80%). 
-
+`crucian_carp_alignment_*_out.bam`   
+Information from previous runs :The program was given a time window of 10 hours, but it finished after 2:33 h. The program was given ntasks=1 and 16 cpus per task. The CPU efficiency was with 77% very good. 12 GB out of the 16 GB given were used (memory efficency: 80%). 
 
 
+## 4) Merge all bam files into one transcript.bam file (02.10.2024)
+
+To prohibit problems with the assembly of the transcriptome all bam files were merged into one big transcript.bam file with the `2_5_samtools_merge_bam.sh` script. 

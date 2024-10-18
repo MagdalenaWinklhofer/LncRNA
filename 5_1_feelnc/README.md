@@ -11,7 +11,7 @@ Since the program contains a special mode/wrapper (called `ushuffle`) to search 
 - to execude the installation: `cd fasta_ushuffle` followed my the `make` command 
 
 
-## 1) FEELnc_filter.pl: Extract, filter candidate transcripts. (15.03.2024; slurm out: 10977727)
+## 1) FEELnc_filter.pl: Extract, filter candidate transcripts. (16.10.2024; slurm out: 12950638)
 In this step of the pipeline, the transcripts are filtered. Unwanted transcripts and protein coding exons are filtered out. 
 
 **Basic command**:  
@@ -23,14 +23,15 @@ input:
 - a: annotation file (.gtf) 
 
 **Outcome**:  
-`feelnc_candidate_lncRNA.gtf` 
+`feelnc_candidate_lncRNA_all.gtf` 
 
+Information from previous run:   
 The program tock 10.35 minutes to run. The memory of 16 GB of memory were used with a efficiency of 52%. I started the program with 1 tasks and 4 cpus-per-task (CPU efficiency: 76%). 
 
 I also started the program with 12 CPU. The program was completed after 6 minutes. 
 
 
-## 2) FEELnc_codpot.pl: Compute the coding potential of candidate transcripts. (15.03.2024: slurm out: 10978392)
+## 2) FEELnc_codpot.pl: Compute the coding potential of candidate transcripts. (17.10.2024: slurm out: 12567850)
 In this step of the pipeline the coding potential of the transcripts is calculated. 
 
 **Slurm file**:  
@@ -38,10 +39,15 @@ In this step of the pipeline the coding potential of the transcripts is calculat
 
 **Basic command**:  
 `FEELnc_codpot.pl -i /candidate_lncRNA.gtf \
--a annotation.gtf \
+-a annotation.gtf \ 
 -o codpot_shuffle \
 -g genome.fasta \
 --mode=shuffle
+
+**NOTE**: 
+- use generat annotation NOT the one from Stringtie! 
+- use the output from the filtering step as input!
+- use shuffle mode 
 
 input: 
 - i: input (.gtf)
@@ -51,15 +57,36 @@ input:
 - mode: shuffle or intergenetic
 
 **Outcome**:  
-multiple files in the `/cluster/work/users/magdalena/lncrna/4_1_feelnc` directory. The program automatically produces a subdirectory `feelnc_lncRNA_codpot_shuffle`. 
+multiple files in the `/cluster/work/users/magdalena/lncrna/5_1_feelnc/5_1_2_feelnc_codpot` directory. 
 
+Use file `feelnc_candidate_lncRNA_all.gtf_RF.txt` for further analysis. 
+
+Information from previous runs:  
 This part of the program needs a long time to complete. The program usually runs multiple hours. The suffle mode took 7.5h to complete. 
 
-# NOTE: I used shuffle mode during the calculation of coding potential. 
 
-# NOTE: STEP 3 is not needed for the lncRNA identification. Take the `feelnc_lncRNA_codpot_shuffle.lncRNA.gtf` file for identification of common lncRNA 
 
-`feelnc_lncRNA_codpot_shuffle.noORF.gtf` is most likely a subset of `feelnc_lncRNA_codpot_shuffle.lncRNA.gtf`. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,8 +118,6 @@ The program took with one CPU and one task ..h to complete.
 
 
 # FINAL FILE: feelnc_lncRNA.txt
-
-
 
 
 # NOTE: File 5_1_1 until 5_1_3 are for the classification of lncRNA and ONLY 5_1_4 are for the idnetification of lncRNA

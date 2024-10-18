@@ -24,4 +24,3 @@ hisat2-build -p 16 --exon extracted_exons.exon --ss splice_sites.ss \
 
 # to close everything 
 ml purge 
-

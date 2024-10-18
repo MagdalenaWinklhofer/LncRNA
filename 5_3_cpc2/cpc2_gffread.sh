@@ -15,12 +15,13 @@
 ml load Biopython/1.81-foss-2022b
 
 # change directory to the program script 
-cd /cluster/projects/nn8014k/magdalena/.program_CPC2/CPC2_standalone-1.0.1/
+cd /cluster/projects/nn8014k/magdalena/.program_CPC2/CPC2_standalone-1.0.1/bin/
 
 # Prediction of lncRNA with CPC2 crucian carp 
-bin/CPC2.py \
- -i /cluster/projects/nn8014k/magdalena/script_CPC2/cc_transcripts.fa \
- -o /cluster/projects/nn8014k/magdalena/script_CPC2/cc_codpot_gffread
+ python CPC2.py \
+ -i /cluster/projects/nn8014k/magdalena/LncRNA/4_gffread/all_transcript/cc_transcripts_all.fa \
+ -o /cluster/work/users/magdalena/lncrna/5_3_cpc2/cpc2_cc_codpot_all.txt
+
 
 
 

@@ -61,7 +61,7 @@ output=("cc_transcriptome_A1.gtf" \
 
 stringtie -o /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/${output[$SLURM_ARRAY_TASK_ID]} \
 -v -p 4 \
- -G /cluster/work/users/magdalena/lncrna/genome_index/ccar_annotation.gtf \
+ -G /cluster/work/users/magdalena/lncrna/genome_index/carcar_annotation_v5.gtf \
  /cluster/work/users/magdalena/lncrna/2_hisat_alignment/${input[$SLURM_ARRAY_TASK_ID]} 
 
 

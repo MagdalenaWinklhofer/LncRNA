@@ -18,10 +18,11 @@ cd /cluster/work/users/magdalena/lncrna/5_1_feelnc/
 
 # Coding_Potential_shuffle mode 
 FEELnc_codpot.pl \
- -i /cluster/projects/nn8014k/magdalena/script_LncRNA/4_gffread/cc_transcripts.fa \
- -a /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_merged.gtf  \
- -o /cluster/work/users/magdalena/lncrna/5_1_feelnc/5_1_4_feelnc_codpot_gffread/feelnc_lncRNA_codpot_shuffle_gffread \
+ -i /cluster/work/users/magdalena/lncrna/5_1_feelnc/5_1_1_feelnc_filter/feelnc_candidate_lncRNA_all.gtf \
+ -a /cluster/work/users/magdalena/lncrna/genome_index/carcar_annotation_v5.gtf \
  -g /cluster/work/users/magdalena/lncrna/genome_index/ccar_genome_v1_262scaffolds_masked.fasta \
+ --outdir 5_1_2_feelnc_codpot/ \
  --mode=shuffle
 
 # the -p option is not available in the codpot module 
+

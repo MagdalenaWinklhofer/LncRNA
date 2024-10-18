@@ -16,9 +16,9 @@ cd /cluster/projects/nn8014k/magdalena/.program_gffread/
 
 # Generate a fasta file with all transcripts 
 gffread/gffread \
--w cc_transcripts.fa \
+-w cc_transcripts_all.fa \
 -g /cluster/work/users/magdalena/lncrna/genome_index/ccar_genome_v1_262scaffolds_masked.fasta \
- /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_merged.gtf 
+ /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_all.gtf 
 
 
 # Shows a table 

@@ -12,7 +12,7 @@ The source code (zip) was downloaded and transfered from the local computer to t
 
 
 ## Before program start
-The program is a stand alone version and hence does not need a python environment. The program can be started immedieately. The program is stored in the directory (`.program_CPC2`), but the scripts and the output is stored in the (`script_CPC2`) directory. 
+The program is a stand alone version and hence does not need a python environment. The program can be started immediately. The program is stored in the directory (`.program_CPC2`), but the scripts and the output is stored in the (`script_CPC2`) directory. 
 
 
 **Slurm file**:  

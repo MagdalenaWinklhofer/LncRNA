@@ -15,7 +15,7 @@ ml load StringTie/2.2.1-GCC-11.2.0
 ml list
 
 # change directory to the program script 
-cd /cluster/projects/nn8014k/magdalena/script_StringTie
+cd /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/
 
 # merge of a list of GTF files with Stringtie 
 stringtie \
@@ -39,7 +39,7 @@ stringtie \
  /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_R12.gtf \
  /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_R13.gtf \
  -p 4 \
- -G /cluster/work/users/magdalena/lncrna/genome_index/ccar_annotation.gtf \
+ -G /cluster/work/users/magdalena/lncrna/genome_index/carcar_annotation_v5.gtf \
  -o /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_merged.gtf \
 
 # to close everything 
