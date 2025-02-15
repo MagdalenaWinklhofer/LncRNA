@@ -66,7 +66,7 @@ output=("cc_counts_A1.txt" \
 
 featureCounts \
 -T 4 -O -C -p --countReadPairs -s 2 -t exon -g transcript_id \
--a /cluster/work/users/magdalena/lncrna/3_stringtie_transcriptome/cc_transcriptome_merged.gtf \
+-a /cluster/projects/nn8014k/magdalena/LncRNA/3_stringtie/3_1_create_transcriptome_all/cc_transcriptome_all.gtf \
 -o /cluster/work/users/magdalena/lncrna/7_featurecounts/${output[$SLURM_ARRAY_TASK_ID]}\
  /cluster/work/users/magdalena/lncrna/2_hisat_alignment/${input[$SLURM_ARRAY_TASK_ID]}
 
